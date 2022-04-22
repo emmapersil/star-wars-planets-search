@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import SelectInput from './SelectInput';
 import SWContext from '../context/SWContext';
+import './sortByAsc.css';
 
 function SortByAsc() {
   const INITIAL_STATE = { columnSort: 'population', sortInput: 'ASC' };
@@ -31,9 +32,9 @@ function SortByAsc() {
   };
 
   return (
-    <div>
+    <div className="ascfilter__container">
       <SelectInput
-        label="Ordernar por"
+        label="Order by: "
         id="column-sort"
         name="columnSort"
         options={ sortOptions }
@@ -41,8 +42,9 @@ function SortByAsc() {
       />
 
       <label htmlFor="asc">
-        Ascendente
+        Ascendent
         <input
+          className="radio__input"
           type="radio"
           onChange={ handleChange }
           value="ASC"
@@ -53,8 +55,9 @@ function SortByAsc() {
         />
       </label>
       <label htmlFor="desc">
-        Descendente
+        Descendent
         <input
+          className="radio__input"
           type="radio"
           onChange={ handleChange }
           value="DESC"
@@ -69,7 +72,7 @@ function SortByAsc() {
         data-testid="column-sort-button"
         onClick={ handleButton }
       >
-        Ordenar
+        Order
       </button>
     </div>
   );

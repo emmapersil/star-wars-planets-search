@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './selectInput.css';
 
 const SelectInput = ({ name, id, callback, options, label }) => (
-  <label htmlFor={ id }>
-    { label }
-    <select
-      name={ name }
-      id={ id }
-      data-testid={ id }
-      onChange={ callback }
-    >
-      { options.map((option) => (
-        <option key={ option } value={ option }>{ option }</option>
-      )) }
-    </select>
-  </label>
+  <div className="select__container">
+    <label htmlFor={ id }>
+      { label }
+      <select
+        name={ name }
+        id={ id }
+        data-testid={ id }
+        onChange={ callback }
+      >
+        { options.map((option) => (
+          <option key={ option } value={ option }>{ option }</option>
+        )) }
+      </select>
+    </label>
+  </div>
 );
 
 SelectInput.propTypes = {

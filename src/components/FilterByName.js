@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import SWContext from '../context/SWContext';
+import './filterByName.css';
 
 function FilterByName() {
   const { data, changeState } = useContext(SWContext);
@@ -10,14 +11,18 @@ function FilterByName() {
   };
 
   return (
-    <label htmlFor="name-filter">
-      <input
-        data-testid="name-filter"
-        type="text"
-        id="name-filter"
-        onChange={ handleNameSearch }
-      />
-    </label>
+    <div className="name-filter__container">
+      <label htmlFor="name-filter">
+        <span role="img" aria-label="planet">🌕</span>
+        Search by planet name:
+        <input
+          data-testid="name-filter"
+          type="text"
+          id="name-filter"
+          onChange={ handleNameSearch }
+        />
+      </label>
+    </div>
   );
 }
 

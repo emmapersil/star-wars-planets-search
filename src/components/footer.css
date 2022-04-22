@@ -1,0 +1,6 @@
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top:auto; 
+  color: var(--color-white);
+}

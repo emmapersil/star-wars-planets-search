@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import SelectInput from './SelectInput';
 import SWContext from '../context/SWContext';
+import './filterByNumber.css';
 
 function FilterByNumber() {
-  const INITIAL_STATE = { column: 'population', comparison: 'maior que', value: 0 };
+  const INITIAL_STATE = { column: 'population', comparison: 'more than', value: 0 };
   const [state, setState] = useState(INITIAL_STATE);
   const { filter, changeState, filterByNumericValues } = useContext(SWContext);
 
@@ -16,11 +17,11 @@ function FilterByNumber() {
 
     const filteredArray = filter.filter((planet) => {
       switch (comparison) {
-      case 'maior que':
+      case 'more than':
         return Number(planet[column]) > value;
-      case 'menor que':
+      case 'less than':
         return Number(planet[column]) < value;
-      case 'igual a':
+      case 'equal to':
         return Number(planet[column]) === Number(value);
       default:
         return false;
@@ -41,11 +42,12 @@ function FilterByNumber() {
 
   const columnOptions = ['population', 'orbital_period',
     'diameter', 'rotation_period', 'surface_water'];
-  const comparisonOptions = ['maior que', 'menor que', 'igual a'];
+  const comparisonOptions = ['more than', 'less than', 'equal to'];
 
   return (
-    <div>
+    <div className="numfilter__container">
       <SelectInput
+        label="Select filter: "
         name="column"
         id="column-filter"
         callback={ handleChange }
@@ -54,6 +56,7 @@ function FilterByNumber() {
         ) : columnOptions }
       />
       <SelectInput
+        label="Comparision: "
         name="comparison"
         id="comparison-filter"
         callback={ handleChange }
@@ -68,11 +71,12 @@ function FilterByNumber() {
       />
 
       <button
+        className="filter__btn"
         type="button"
         data-testid="button-filter"
         onClick={ handleButton }
       >
-        Filtrar
+        Filter
       </button>
     </div>
   );

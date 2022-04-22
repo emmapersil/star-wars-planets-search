@@ -11,11 +11,11 @@ function Filter() {
     newFilterByNum.forEach(({ column, comparison, value }) => {
       newFilter = data.filter((planet) => {
         switch (comparison) {
-        case 'maior que':
+        case 'more than':
           return Number(planet[column]) > value;
-        case 'menor que':
+        case 'less than':
           return Number(planet[column]) < value;
-        case 'igual a':
+        case 'equal to':
           return Number(planet[column]) === Number(value);
         default:
           return false;
@@ -30,11 +30,13 @@ function Filter() {
 
   return (
     filterByNumericValues.map(({ column, comparison, value }) => (
-      <p data-testid="filter" key={ column }>
+      <div data-testid="filter" key={ column }>
         {`${column} ${comparison} ${value}`}
         {' '}
-        <button type="button" onClick={ () => handleButton(column) }>X</button>
-      </p>
+        <button type="button" onClick={ () => handleButton(column) }>
+          Clear filters
+        </button>
+      </div>
     ))
   );
 }
